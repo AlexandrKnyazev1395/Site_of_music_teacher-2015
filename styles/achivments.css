@@ -1,0 +1,26 @@
+.achivments_block{
+	display: inline-block;
+	position: relative;
+	width: 33%;
+	vertical-align: middle;
+}
+.achivments_block img{
+	width: 100%;
+}
+.achivments_block img:hover{
+	background-color: white;
+}
+.about_achivment{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	margin: 0;
+	padding-top: 20px;
+	background-color: rgba(250,250,250,0.8);
+	text-align: center;
+	overflow: auto;
+	font-family: 'Comfortaa', cursive;
+	font-size: 18px;
+	color: red;
+}

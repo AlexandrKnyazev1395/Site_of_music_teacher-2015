@@ -1,0 +1,37 @@
+#categories_methodical{
+	padding: 0px;
+	text-align: center;
+	margin-bottom: 35px;
+}
+
+#categories_methodical li{
+	
+	list-style-type: none;
+	margin:0 10px;
+	padding: 10px 5px 5px 5px;
+	display: inline-block;
+	font-family: 'Comfortaa', cursive;
+	text-align: center;
+	border-bottom: 1px solid rgba(135,135,135,1);
+	border-radius: 5px;
+	
+}
+#categories_methodical li:hover{
+	background-color: rgba(200,200,200,0.1);
+	transform:scale(1.03);
+	cursor: pointer;
+
+}
+.methodical_block{
+	margin-left: 5%;
+	clear: both;
+	padding-bottom: 15px;
+}
+.methodical_block p{
+	font-size: 18px;
+	font-family: 'Lora', serif;
+}
+
+.active_methodical{
+	background-color: rgba(200,200,200,0.2);
+}
