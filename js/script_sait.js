@@ -2,6 +2,7 @@ $(document).ready(function() {
 	choose_category();
 	show_achivment_description();
 	show_connect_help();
+	show_mail();
 });
 
 function choose_category(){
@@ -17,12 +18,12 @@ function choose_category(){
 					<div id="text_me" class="style_text">\
 						<p>\
 						Привет всем, кто заглянул на страничку моего сайта.\
-						Если вы не равнодушны к музыке и детям - значит вам сюда! Во время работы в школе у меня постоянно пополняется копилка,\
+						Если вы неравнодушны к музыке и детям - значит вам сюда! Во время работы в школе у меня постоянно пополняется копилка,\
 						на мой взгляд, интересного материала, которым хочется поделиться.\
 						Буду рада, если смогу помочь в создании уроков музыки и проведении  школьных праздников.\
 						</p>\
 						<p>\
-						Мой педагогический стаж - 16 лет.\
+						Мой педагогический стаж - 17 лет.\
 						С 2001 года  я  работаю в МКОУ СОШ №2 \
 						Левокумского муниципального района учителем музыки и педагогом дополнительного образования.  \
 						Имеею высшую квалификационную категорию. Являюсь руководителем районного и школьного методического \
@@ -30,7 +31,7 @@ function choose_category(){
 						</p>\
 					</div>\
 					<div id="connect">\
-						<a href=#>\
+						<a id="mail" href=#>\
 							<p>Cвязаться со мной</p>\
 							<img src="img/connect.png">\
 						</a>\
@@ -43,6 +44,9 @@ function choose_category(){
 							<img src="img/nota.png">\
 						</a>\
 					</div>\
+					<div id="mail_info">\
+				        <p>Пишите на<br> oksi-nota@mail.ru <span>&times;</span></p>\
+				    </div>\
 					');
 				break;
 
@@ -165,14 +169,15 @@ function galery(){
 	var last_photo=0;
 	var scroll_mini_images=0;
 	$('.contents').append(' \
-	   	<div class= "galery_block">\
-		   	<div id="active_image">\
-		   	<img src="galery/image (1).jpg">\
-		   	<p class="next_back" id="next">Далее</p>\
-	        <p class="next_back" id="back">Назад</p>\
-		   	</div> \
-	        <div id="mini_images">\
-	        </div>\
+		<div class= "galery_block">\
+			<div id="active_image_block">\
+				<img id="loader" src="img/ajax-loader.gif" alt="Loading image!">\
+				<img id="active_image" src="galery/image (1).jpg">\
+				<p class="next_back" id="next">Далее</p>\
+				<p class="next_back" id="back">Назад</p>\
+			</div> \
+				<div id="mini_images">\
+			</div>\
 		</div>\
 	');
 	for (var i = 1; i <= number_photos; i++) {
@@ -186,13 +191,13 @@ function galery(){
 		active_photo = index_choose_photo+1;
 		next_photo = index_choose_photo + 2;
 		last_photo = index_choose_photo;
+		var w_width = $(window).width();
 		scroll_mini_images =index_choose_photo * 128.2;
-		$('#active_image').empty();
-		$('#active_image').append(' \
-	          <img src="galery/image ('+active_photo+').jpg">\
-	          <p class="next_back" id="next">Далее</p>\
-	          <p class="next_back" id="back">Назад</p>\
-		');
+		$('#active_image').hide();
+		$('#active_image').attr({
+			src: 'galery/image ('+active_photo+').jpg',
+		});
+		change_photo_galery();
 		$("#back, #next").css('opacity', '1');
 		$('#mini_images img').removeClass('active_photo');
 		$(this).addClass('active_photo');
@@ -206,12 +211,11 @@ function galery(){
 			next_photo++;
 			last_photo++;
 			scroll_mini_images +=128.2;
-			$('#active_image').empty();
-			$('#active_image').append(' \
-		          <img src="galery/image ('+active_photo+').jpg">\
-		          <p class="next_back" id="next">Далее</p>\
-		          <p class="next_back" id="back">Назад</p>\
-			');
+			$('#active_image').hide();
+			$('#active_image').attr({
+				src: 'galery/image ('+active_photo+').jpg',
+			});
+			change_photo_galery();
 			$("#back").css('opacity', '1');
 			$('#mini_images img').removeClass('active_photo');
 			$('#mini_images img:eq('+last_photo +')').addClass('active_photo');
@@ -227,12 +231,11 @@ function galery(){
 			next_photo--;
 			last_photo--;
 			scroll_mini_images -=128.2;
-			$('#active_image').empty();
-			$('#active_image').append(' \
-		          <img src="galery/image ('+active_photo+').jpg">\
-		          <p class="next_back" id="next">Далее</p>\
-		          <p class="next_back" id="back">Назад</p>\
-			');
+			$('#active_image').hide();
+			$('#active_image').attr({
+				src: 'galery/image ('+active_photo+').jpg',
+			});
+			change_photo_galery();
 			$("#next").css('opacity', '1');
 			$('#mini_images img').removeClass('active_photo');
 			$('#mini_images img:eq('+last_photo +')').addClass('active_photo');
@@ -246,6 +249,15 @@ function galery(){
 	
 }
 
+function change_photo_galery(){
+	$('#active_image').hide();
+	$('#loader').show();
+	$('#active_image').load( function() {
+	$('#loader').hide();
+	$('#active_image').show();
+	} );
+}
+
 function show_connect_help(){
 	$("body").on('mouseover','#connect a',function (){
 		$(this).children('p').show();
@@ -256,6 +268,20 @@ function show_connect_help(){
 	
 }
 
+function show_mail(){
+	$("body").on('click','#mail',function (){
+		$('#mail_info').show('200');
+	});
+	$("body").on('click','#mail_info span',function (){
+		$('#mail_info').hide('200');
+	});
+	
+}
+
+
+
+
+///Begin of JSON's
 var events = [
 	{
 		"title":"Казачья краса",

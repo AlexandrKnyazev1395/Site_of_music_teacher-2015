@@ -11,7 +11,7 @@ body{
 	background-color: #FFFFFF;
 	color: #222;
 	margin: 0 auto;
-	min-width: 680px;
+	min-width: 650px;
 }
 
 #shapka{
@@ -183,4 +183,30 @@ h2{
 	border: 1px solid rgba(135,135,135,1);
 	font-family: 'Lora', serif;
 	border-radius: 5px;
+}
+
+#mail_info{
+	display: none;
+	position:absolute;
+	top: 40%;
+	left: 40%;
+	height: 70px;
+	width:230px;
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	border: 1px solid rgba(135,135,135,1);
+	background-color: rgba(255, 255, 255, 1);
+	font-size: 17px;
+	line-height: 1.5;
+}
+#mail_info span{
+	position: absolute;
+	margin-left: 35px;
+	margin-top: -50px;
+	font-size: 30px;
+	cursor: pointer;
+}
+#mail_info p{
+	margin-top: 5px;
 }
