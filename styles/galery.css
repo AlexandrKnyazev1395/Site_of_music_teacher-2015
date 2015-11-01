@@ -40,6 +40,7 @@
 #mini_images img{
 	opacity: 0.87;
 	display: inline-block;
+	height: 105px;
 	padding: 0px;
 	margin: 0px;
 	cursor: pointer;
